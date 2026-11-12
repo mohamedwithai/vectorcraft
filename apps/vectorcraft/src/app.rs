@@ -58,6 +58,7 @@ impl eframe::App for App {
         // Symbol-font characters a keyboard tool typed (NHM Writer legacy Tamil).
         #[cfg(windows)]
         super::windows_symbol_chars::raw_input_hook(raw);
+        super::keylog::events(&raw.events);
         file_access::unconfined(|| self.app.raw_input_hook(ctx, raw));
         // A mouse-up that never reached the window (#4326) is delivered once AppKit reports
         // that no mouse button is down.

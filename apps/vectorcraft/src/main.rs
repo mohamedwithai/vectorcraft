@@ -32,6 +32,7 @@ mod cursor_theme;
 mod gpu;
 #[cfg(target_os = "linux")]
 mod linux_stylus;
+mod keylog;
 mod logging;
 #[cfg(all(target_os = "macos", feature = "wgpu"))]
 mod mac_color_space;
